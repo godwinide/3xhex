@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>HEX.COM: The first high-yield Blockchain Certificate of Deposit</title>
+	<link rel="shortcut icon" href="_assets/img/favicon128.png">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+	<link rel="stylesheet" href="/_assets/css/MaterialIcons.css">
+	<link rel="stylesheet" href="/main.css">
+	<link rel="stylesheet" href="/_assets/css/video-js.min.css" media="print" onload="this.media='all'">
+	<script src="/_assets/js/video.min.js"></script>
+	<script src="/_assets/js/jquery-3.6.0.min.js"></script>
+   
+
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="HEX.COM">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="HEX.COM">
+
+	<!-- SEO -->
+	<meta name="copyright" content="Richard Heart, 2022">
+	<meta name="author" content="Richard Heart">
+	<meta name="description" lang="en" content="HEX.COM: The first high-yield Blockchain Certificate of Deposit">
+	<meta name="keywords" lang="en" content="HEX, crypto, yield, staking, rewards, Richard Heart, scam">
+	<meta name="date" content="2022-02-04T00:00:00+00:00">
+	<meta name="page-topic" content="HEX, crypto">
+
+	<!-- Google Analytics-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114685491-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-114685491-4');
+	</script>
+
+	<meta property="og:url" content="https://HEX.com">
+	<meta property="og:description" content="HEX.COM: The first high-yield Blockchain Certificate of Deposit">
+	<meta name="twitter:description" content="HEX.COM: The first high-yield Blockchain Certificate of Deposit">
+	<meta property="og:image:url" content="https://HEX.com/_assets/twt_cards/Main.png">
+	<meta name="twitter:image" content="https://HEX.com/_assets/twt_cards/Main.png">
+
+	<script src="/_assets/js/particles.min.js"></script>
+	<script src="/_assets/js/Chart.min.js"></script>
+	<script src="/_assets/js/moment.min.js"></script>
+
+	<!--Load background images of subpages into cache-->
+	<link rel="prefetch" as="image" href="_assets/img/bg/floor.jpg">
+	<link rel="prefetch" as="image" href="_assets/img/bg/lambo.jpg">
+
+	<style>
+		/*tooltips*/
+		[tt] {
+			position: relative;
+		}
+		[tt]:after {
+			color: #fff; font-weight: 600; font-size: 12px;
+			user-select: none; cursor: default;
+
+			content: attr(tt); visibility: hidden; opacity: 0; transition: all .2s;
+			background-color: #fff; color: var(--darkBlue); border-radius: 5px; text-align: center; padding: 5px 8px; box-shadow: 0 5px 15px #000;
+			position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+			width: 120px; text-align: center;
+		}
+
+		.pulseCard:before {
+			content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+			margin: -3px; z-index: -1; border-radius: 10px;
+		}
+		#pulseCcard:before {background: var(--pulseGradient);}
+		#pulseXcard:before {background: var(--pulseXGradient);}
+
+		#statsGrid > div {
+			text-align: center; padding: 0;
+		}
+
+		#statsGrid > div > h1 {
+			color: #fff; margin-bottom: 5px;
+		}
+
+		@media (max-width: 1050px) {
+			iframe {display: none;}
+			#section2vid1 {margin-bottom: 0 !important;}
+			#section2vid2 {display: none;}
+			#section3title, #section6title {font-size: 32px !important; text-align: left !important; white-space: normal !important; margin-top: inherit !important;}
+			#awesomeSitesGrid {grid-template-columns: repeat(2, 1fr) !important; grid-gap: 30px;}
+		}
+
+		@media (max-width: 820px) {
+			#mainTitleBreak {display: none;}
+			#statsGrid {grid-template-columns: repeat(3, 1fr) !important;}
+			#chartCanvasOuter {height: 400px !important;}
+			#specialGrid {grid-template-columns: repeat(2, 1fr) !important; grid-gap: 30px;}
+		}
+
+		@media (max-width: 600px) {
+			.pulseCard {width: calc(100% - 60px) !important;}
+			.pulseCard > img {margin-bottom: 5px;}
+			.pulseCard br, #openStakeBtn, .hideMobileStat, .dataLbl-stakersChange, .dataLbl-holdersChange {display: none;}
+			#statsGrid {grid-template-columns: repeat(2, 1fr) !important; grid-gap: 30px;}
+			#statsGrid > div {text-align: left;}
+			#specialGrid, #awesomeSitesGrid {grid-template-columns: 1fr !important;}
+			#statsGrid > div > h1 {font-size: 20px;}
+			#chartCanvasOuter {height: 350px !important;}
+		}
+
+		@media (max-width: 550px) {
+			#mainTitle {font-size: 30px !important;}
+		}
+
+		@media (max-width: 450px) {
+			#nomicsDisc {margin: 25px 0 0 0 !important;}
+			#chartCanvasOuter {height: 300px !important;}
+			.pulseCard > img {display: none;}
+		}
+
+	</style>
+</head>
+<body>
+	<style>
+		/*menu bar expanding to full width onscroll*/
+		.menuBarScrolled {
+			clip-path: polygon(
+				0 0, 0 0,
+				100% 0, 100% 0,
+				100% 50%, 100% 50%,
+				100% 100%, 100% 100%,
+				0 100%, 0 100%,
+				0 50%, 0 50%
+			) !important;
+		}
+
+		/*menu links & dropdown*/
+		.menuLink {
+			position: relative; display: inline-block; padding: 28px 16px; white-space: nowrap;
+		}
+		.menuLink, .mobileMenuLink {
+			font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: .05em; color: #aaa;
+		}
+		.menuLinkActive, .menuLinkStatic {cursor: default;}
+		.menuLinkActive { color: #fff; font-weight: 700; pointer-events: none;}
+		.menuLink > span {
+			position: relative; float: right; font-size: 1.35em;
+		}
+		.mpContent > .menuLink {
+			padding: 8px 16px; width: calc(100% - 32px);
+		}
+
+		@media not all and (pointer:coarse) {
+			.menuLink:not(.menuLinkActive, .menuLinkStatic):hover, .mobileMenuLink:hover {
+				color: #ccc;
+			}
+
+			.menuLinkOuter:hover .mpContent {
+				opacity: 1 !important; visibility: visible !important;
+			}
+		}
+
+
+		#mobileMenu > div > div {
+			position: relative; float: right; width: 100%;
+		}
+		.mobileMenuLink {
+			position: relative; float: right; font-size: 20px; margin-bottom: 10px; padding: 5px 12px;
+		}
+
+
+		/*Price label online indicator*/
+		#menuBarPriceLbl:before {
+			content: '⬢'; transform: rotate(30deg);
+			position: absolute; font-size: 9px; left: -12px; top: 2px;
+		}
+
+		#menuBarPriceLbl:after {
+			content: '⬢';
+			position: absolute; font-size: 9px; left: -12px; top: 2px;
+			animation-name: pulsate; animation-duration: 2s; animation-iteration-count: infinite;
+		}
+
+		@keyframes pulsate {
+			from {transform: rotate(30deg) scale(1); opacity: .6;}
+			to {transform: rotate(30deg) scale(4); opacity: 0;}
+		}
+
+
+
+		@media (hover: none), (max-width: 1080px) {
+			#menuBarOuter {top: 0 !important;}
+			#menuBarBG {
+				clip-path: polygon(
+					0 0, 0 0,
+					100% 0, 100% 0,
+					100% 50%, 100% 50%,
+					100% 100%, 100% 100%,
+					0 100%, 0 100%,
+					0 50%, 0 50%
+				) !important;
+			}
+		}
+
+		@media (hover: none), (max-width: 1050px) {
+			#buyBtn > .mi {display: none;}
+		}
+
+		@media (hover: none), (max-width: 820px) {
+			.menuLink, #buyBtn {display: none;}
+			#mobileMenuBtn, #mobileMenu {display: inherit !important;}
+			#menuBarOuter {transition: all .2s !important;}
+		}
+
+		@media (max-height: 550px) {
+			.mobileMenuLink {margin-bottom: 5px;}
+		}
+	</style>
+
+	<div id="menuBarOuter" style="position: fixed; left: 0; top: 15px; width: 100%; height: 80px; z-index: 1000; transition: all .5s;">
+		<div class="hr" id="menuBarBG" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: var(--bgColor); height: 80px; clip-path: polygon(
+			calc(50% - var(--bodyWidth)/2 - 2px) 2px,
+			calc(50% - var(--bodyWidth)/2 + 1px) 0,
+			calc(50% + var(--bodyWidth)/2 - 1px) 0,
+			calc(50% + var(--bodyWidth)/2 + 2px) 2px,
+			calc(50% + var(--bodyWidth)/2 + 23px) calc(50% - 2px),
+			calc(50% + var(--bodyWidth)/2 + 23px) calc(50% + 2px),
+			calc(50% + var(--bodyWidth)/2 + 2px) calc(100% - 2px),
+			calc(50% + var(--bodyWidth)/2 - 1px) 100%,
+			calc(50% - var(--bodyWidth)/2 + 1px) 100%,
+			calc(50% - var(--bodyWidth)/2 - 2px) calc(100% - 2px),
+			calc(50% - var(--bodyWidth)/2 - 23px) calc(50% + 2px),
+			calc(50% - var(--bodyWidth)/2 - 23px) calc(50% - 2px)
+		); transition: all .5s;"></div>
+
+		<div class="hr" style="width: var(--bodyWidth);">
+			<a href=".html" id="menuLogoLink">
+				<img src="_assets/img/wordmark.svg" class="fl" style="height: 40px; margin-top: 20px;" alt="HEX.COM Logo svg">
+				<span id="menuBarPriceLbl" style="display: none; position: absolute; top: 10px; left: 171px; color: #0f5; font-size: 12px; font-family: 'Jost';"></span>
+			</a>
+
+			<a class="menuLink" href="/stake">Join The Competition</a>
+			<a class="menuLink" href="https://hex.com/scam">Scam</a>
+			<a class="menuLink" href="#">FAQ</a>
+			<div class="menuLinkOuter" style="position: relative; display: inline-block; height: 100%;">
+				<a class="menuLink menuLinkStatic" href="javascript:">More<span class="mi">expand_more</span></a>
+				<div class="mpContent" style="visibility: hidden; opacity: 0; transition: all .2s; position: absolute; right: 0; top: 100%; background-color: var(--bgColor); text-align: right; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 10px));">
+					<a class="menuLink" href="#">Testimonials</a>
+					<a class="menuLink" href="#">Security</a>
+					<a class="menuLink" href="#">Links</a>
+					<a class="menuLink" href="#" style="padding-bottom: 16px;">HEX vs Bitcoin</a>
+				</div>
+			</div>
+
+			<a href="/stake" id="buyBtn" class="btn btnColored" style="float: right; margin-top: 17px;">
+				<span class="mi">credit_card</span>Stake
+			</a>
+		</div>
+
+		<div id="mobileMenu" style="display: none; visibility: hidden; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bgColor); transform: translateX(111%); will-change: transform; transition: all .2s;">
+			<div style="width: var(--bodyWidth); position: relative; display: inline-block; text-align: right;">
+				<a class="menuLink" href="/stake">Join The Competition</a>
+				<a class="menuLink" href="https://hex.com/scam">Scam</a>
+				<div><a class="mobileMenuLink" href="#">FAQ</a></div>
+				<div><a class="mobileMenuLink" href="#">Testimonials</a></div>
+				<div><a class="mobileMenuLink" href="#">Security</a></div>
+				<div><a class="mobileMenuLink" href="#">Links</a></div>
+				<div><a class="mobileMenuLink" href="#">HEX vs Bitcoin</a></div>
+
+				<a href="/stake" id="mobileBuyBtn" class="btn" style="float: right; margin: 7px 0 25px 0;">
+					<span class="mi">credit_card</span>Stake
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		if ('.' == '.')
+			$('#menuLogoLink').addClass('menuLinkActive')
+
+		const siteIndex = ['howitworks','scam','faq','testimonials','security','links','bitcoin'].indexOf(window.location.pathname.replaceAll('index.html',''))
+		if (siteIndex > -1)
+			$(`.menuLink:eq(${siteIndex>2?siteIndex+1:siteIndex}), .mobileMenuLink:eq(${siteIndex})`).addClass('menuLinkActive')
+
+		if (window.location.pathname.replaceAll('index.html','') == 'buy') {
+			$('#buyBtn').css({cursor:'default',transform:'scale(1)',filter:'none'}).attr('href','javascript:')
+			$('#mobileBuyBtn').hide()
+		}
+
+		function scrollPlay () {
+			const scrolled = $(document).scrollTop()>=1
+			$('#menuBarBG').toggleClass('menuBarScrolled', scrolled)
+			$('#menuBarOuter').css({
+				top: scrolled ? 0 : 15,
+				filter: `drop-shadow(0 2px ${scrolled ? 5 : 50}px #000)`
+			})
+
+			window.requestAnimationFrame(scrollPlay)
+		}
+
+		scrollPlay()
+
+		let mobileMenuActive = false
+		function menu () {
+			mobileMenuActive = !mobileMenuActive
+			$('#mobileMenuBtn').children().eq(0).text(mobileMenuActive ? 'close' : 'menu')
+			$('#mobileMenu').css({
+				transform: `translateX(${mobileMenuActive?0:111}%)`,
+				visibility: mobileMenuActive ? 'visible' : 'hidden' // hide because the box-shadow is otherwise visible on the right border of the screen
+			})
+		}
+
+		$.getJSON('https://hexdailystats.com/livedata', e => {
+			let priceShort = Math.round(e.price*100)/100
+			priceShort = '$' + (priceShort<1 ? priceShort.toString().slice(1) : priceShort) // remove leading 0
+			$('#menuBarPriceLbl').text(priceShort).fadeIn(500)
+		})
+	</script>
+
+	<div class="hr section" style="background-image: url(_assets/img/bg/main.webp);">
+		<div id="particleDiv" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+		<div class="hr pageOuter">
+			<h1 class="hr" id="mainTitle" style="margin: 80px 0 20px 0; font-size: 58px; line-height: 1.35em;">HEX Stakes average <br id="mainTitleBreak">38% returns a year.</h1>
+
+			<div class="hr fl">
+				<div class="fl list" style="margin: 5px 0 30px 0;">
+					<div><span class="mi">card_membership</span>
+						The first Blockchain Certificate of Deposit
+					</div>
+					<div><span class="mi">verified_user</span>
+						High returns, no minimum & decentralized design
+					</div>
+					<div><span class="mi">signal_cellular_alt</span>
+						<span class="dataLbl-holders">300,000</span> wallets already own HEX
+					</div>
+					<div><span class="mi">trending_up</span>
+						So far the HEX price went up <span class="dataLbl-priceX">8000x</span> in under 2 years
+					</div>
+				</div>
+				<div class="hr fl">
+					<p>Complete the tasks to grab airdrop tokens here and now.</p>
+				</div>
+				<div class="hr fl">
+					<a class="btn" href="/stake" style="float: left; margin-right: 20px;">
+						<span class="mi">keyboard_arrow_down</span>🎁Join The Competiton🎁
+					</a>
+					<a class="btn" id="openStakeBtn" href="/stake" target="_blank" rel="noopener" style="float: left;">
+						<span class="mi">signal_cellular_alt</span>Stake
+					</a>
+				</div>
+				<div class="hr fl pulseCard" id="pulseCcard" style="margin-top: 50px; padding: 30px 30px; border-radius: 8px; width: 425px; background-color: #111111e0; box-shadow: 0 15px 30px #0003; font-weight: 500;">
+					<img src="_assets/img/pulse.svg" class="fl" style="height: 44px; margin-right: 12px;" alt="PulseChain logo">
+					To lower transaction "gas" fees <a href="https://richardheart.com/" target="_blank" rel="noopener" class="textLink">Richard Heart</a> is <br>building a new Ethereum fork called <a href="https://pulsechain.com/" target="_blank" rel="noopener" class="textLink">PulseChain</a>!<br>
+				</div>
+			</div>
+
+			<iframe src="https://ethhex.com/" style="position: absolute; top: 80px; right: 0; height: calc(100% - 80px); width: 370px;" title="Swap ETH for HEX on ETHHEX.com"></iframe>
+		</div>
+	</div>
+
+	<div class="hr section sectionFlat" style="background-color: #000; background-image: url(_assets/img/diamond.jpg); background-size: auto 65%; background-position: center bottom; background-repeat: no-repeat;">
+		<div class="hr pageOuter" style="padding-bottom: 500px;">
+			<h1 class="hr">The HEX.COM Diamond</h1>
+			<span class="hr selectable">
+				A few weeks ago <a href="https://richardheart.com/" class="textLink" target="_blank" rel="noopener">Richard Heart</a> <a href="https://forbes.com/sites/tanyaklich/2022/02/09/enigma-black-diamond-sells-for-43-million-at-sothebys-auction" class="textLink" target="_blank" rel="noopener">bought</a> the world's largest cut diamond called "The Enigma". It's billions of years old, weighs 555.55 carat and has 55 facets. Richard renamed it to "The HEX.COM Diamond".
+			</span>
+		</div>
+	</div>
+
+	<div class="hr section sectionFlat fixedBG" style="background-color: #0d0d0f; --bgImage: url(_assets/img/bg/floor.jpg);">
+		<div class="hr pageOuter">
+			<h1 class="hr">The 2022 NASCAR Daytona 500's HEX.COM car</h1>
+			<img src="_assets/img/nascar2.jpg" class="hr" style="border-radius: 8px;">
+		</div>
+	</div>
+
+	<div class="hr section" style="background-color: var(--darkBlue);">
+		<div class="hr pageOuter">
+			<div class="fl leftCol" style="width: 550px;">
+				<h1 class="hr" id="section2title">The future of investing is here.</h1>
+				<span class="hr selectable">
+					Certificates of Deposit (CDs) are common investment tools managed by banks. Hundreds of millions of people use them worldwide, creating a market valued in the trillions of dollars. HEX has taken the concept of CDs, added significantly higher average return rates, removed banking fees and turned it into a decentralized cryptocurrency.<br><br>
+					You can "Stake" your HEX by locking up any amount for a period between 1 and 5555 days. Your Stake accrues rewards every day, and the amount of yield depends on the length of your Stake: "Longer Pays Better". The APY for HEX Stakes of average length is around 40%, while traditional bank CDs average less than 2%. In addition to the unprecedented yield, there is also the tendency of the HEX price to appreciate.<br><br>
+					HEX has no central entity, no bureaucracy and no overhead. There are no bonuses awarded to anyone outside of the users who Stake HEX. As a simple to use, high-yield investment tool, HEX makes you the bank.
+				</span>
+				<a class="btn fl" href="howitworks/index.html" style="margin: 25px 30px 0 0;">
+					<span class="mi">menu_book</span>Read More
+				</a>
+			</div>
+			<div class="fl rightCol" style="float: right; width: 400px;">
+				<video class="video-js vjs-16-9" controls preload="metadata" poster="_assets/vids/HEX_intro.jpg" data-setup="{}" style="margin-bottom: 50px;" id="section2vid1">
+					<source src="_assets/vids/HEX_intro.mp4" type="video/mp4">
+				</video>
+				<span>
+				<video class="video-js vjs-16-9" controls preload="metadata" poster="_assets/vids/HEX_value_of_time.jpg" data-setup="{}" id="section2vid2">
+					<source src="_assets/vids/HEX_value_of_time.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+	</div>
+
+	<div class="hr section fixedBG" style="background-color: #0b1425; --bgImage: url(_assets/img/bg/graph.jpg);">
+		<div class="hr pageOuter">
+			<h1 class="hr" id="section3title" style="text-align: center; font-size: 55px; margin-bottom: 40px; white-space: nowrap; margin-top: -20px; text-shadow: 0 5px 30px #303;">The HEX price went up <span class="dataLbl-priceX">8000x</span> so far.</h1>
+			<div class="hr hexGrid hexGridLight" id="statsGrid" style="grid-template-columns: repeat(5, 1fr); justify-content: space-between; color: #ccc; font-weight: 500;">
+				<div id="statsTable-price">
+					<h1 class="dataLbl-price" style="color: #0f5;"></h1>
+					<span tt="In USD">Price</span>
+				</div>
+				<div title="Hello this is a Tooltip">
+					<h1 class="dataLbl-mCap" style="color: #0f5;"></h1>
+					<span tt="Price * circulating supply">Market Cap</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-rank"></h1>
+					<span tt="According to nomics">Market rank</span>
+				</div>
+				<div class="hideMobileStat">
+					<h1 class="dataLbl-dominance"></h1>
+					<span tt="HEX’s share of the global crypto market by Market Cap">Market dominance</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-holders"></h1>
+					<span tt="Wallets that hold HEX (staked or unstaked)">
+						Holders<br><span class="dataLbl-holdersChange" style="font-size: 12px; position: absolute; white-space: nowrap; left: 50%; top: 100%; transform: translateX(-50%); color: #aaa;"></span>
+					</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-stakers"></h1>
+					<span tt="Wallets that have at least 1 active Stake">
+						Stakers<br><span class="dataLbl-stakersChange" style="font-size: 12px; position: absolute; white-space: nowrap; left: 50%; top: 100%; transform: translateX(-50%); color: #aaa;"></span>
+					</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-tvl"></h1>
+					<span tt="Worth of all staked HEX in USD">Total value locked</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-supply"></h1>
+					<span tt="Amount of liquid, unstaked HEX">Circulating supply</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-stakedSupply"></h1>
+					<span tt="Amount of HEX that can not be sold">Staked supply</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-shareX">16,000x</h1>
+					<span tt="The share price increase mirrors the profit of Stakers">Share price increase</span>
+				</div>
+				<div class="hideMobileStat">
+					<h1 class="dataLbl-hexDay"></h1>
+					<span tt="Days since launch on 2nd Dec 2019">HEX Day</span>
+				</div>
+				<div>
+					<h1 class="dataLbl-avgStakeLength"></h1>
+					<span tt="Up to 15 years">Average Stake length</span>
+				</div>
+				<div class="hideMobileStat">
+					<h1 class="dataLbl-doublings"></h1>
+					<span tt="Number of times HEX has doubled in price so far">Price doublings</span>
+				</div>
+				<div class="hideMobileStat">
+					<h1 class="dataLbl-doubleTime"></h1>
+					<span tt="How long it takes the HEX price to double on average">Average double time</span>
+				</div>
+				<div class="hideMobileStat">
+					<h1 class="dataLbl-exchanges"></h1>
+					<span tt="Number of exchanges that list HEX">Exchanges</span>
+				</div>
+			</div>
+			<span class="hr" id="nomicsDisc" style="float: left; text-align: center; margin-top: 30px; margin-bottom: -50px; font-size: 12px; font-weight: 500;">
+				<a href="https://nomics.com/assets/hex-hex" target="_blank" rel="noopener" class="textLink" style="opacity: .1;">Crypto Market Cap & Pricing Data Provided By Nomics.</a>
+			</span>
+		</div>
+	</div>
+	<div class="hr section sectionFlat" style="background-image: url(_assets/img/bg/hexes.jpg);">
+		<div class="hr pageOuter">
+			<span class="hr dataLbl-hexSentence" style="text-align: center;"></span>
+
+			<div class="hr" style="margin: 10px 0 25px 0; height: 500px; position: relative;" id="chartCanvasOuter">
+				<canvas id="chartCanvas"></canvas>
+			</div>
+
+			<span class="hr" style="text-align: center;">
+				Buying just <span class="dataLbl-millionaire"></span> of HEX at its All-Time Low (5th Jan 2020) would have made you a millionaire. And that's without Staking!
+			</span>
+		</div>
+	</div>
+
+	<div class="hr section" style="background-color: var(--darkBlue);">
+		<div class="hr pageOuter">
+			<h1 class="hr">Get started in only 4 steps</h1>
+			<div class="hr hexGrid hexGridLight getStartedGrid" style="grid-template-columns: repeat(4, 1fr);">
+				<div>
+					<span class="hr">
+						<span class="mi">file_download</span>Get MetaMask
+					</span>
+					Download & install the <a href="https://metamask.io/download" target="_blank" rel="noopener" class="textLink">MetaMask wallet</a> extension on a desktop browser like Chrome. You can store & manage your HEX in this Ethereum wallet.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">credit_card</span>Buy ETH
+					</span>
+					You can buy Ether within MetaMask via Wyre or CoinSwitch by clicking the buy button. You need the ETH to pay transaction fees on Ethereum.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">swap_horiz</span>Swap for HEX
+					</span>
+					Visit <a href="https://ethhex.com/" target="_blank" rel="noopener" class="textLink">ETHHEX.com</a>, connect your MetaMask wallet with the blue button & trade some of your ETH for HEX. Leave some ETH in your wallet to cover gas fees.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">account_balance</span>Stake it!
+					</span>
+					You already own HEX at this point, congratulations!<br>To Stake it, visit <a href="https://go.hex.com/stake" target="_blank" rel="noopener" class="textLink">go.hex.com</a>, connect your MetaMask wallet and start a new Stake to earn rewards.
+				</div>
+			</div>
+			<a class="btn" href="buy/index.html" style="margin-top: 25px;">
+				<span class="mi">read_more</span>More details
+			</a>
+		</div>
+	</div>
+
+	<div class="hr section fixedBG" style="background-color: #141222; --bgImage: url(_assets/img/bg/london.webp);">
+		<div class="hr pageOuter">
+			<h1 class="hr" id="section6title" style="text-align: center; font-size: 150px; margin-bottom: 20px; white-space: nowrap; margin-top: -60px; text-shadow: 0 5px 80px #303;">HEX is special</h1>
+			<div class="hr hexGrid selectable" id="specialGrid">
+				<div>
+					<span class="hr">
+						<span class="mi">card_membership</span>HEX is the first Blockchain CD
+					</span>
+					Certificates of Deposit (CDs, also known as Time Deposits or Bonds) are worth trillions of dollars and used by hundreds of millions of people worldwide.<br>CDs are worth more than gold, credit card companies and cash. HEX is a <a href="howitworks/index.html#38%_APY" class="textLink">superior CD</a> on the Blockchain.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">trending_up</span>Incredible performance
+					</span>
+					<a href="howitworks/index.html#Cryptocurrencies" class="textLink">Cryptocurrencies</a> are the highest appreciating asset class in the history of mankind. Bitcoin’s price appreciated 6,500,000x in 12 years, from $0.01 to $65,000. HEX has appreciated <span class="dataLbl-priceX">9481x</span> so far, <a href="howitworks/index.html#Price_performance" class="textLink">outpacing both Bitcoin and Ethereum</a>. A 6,500,000x would put HEX at $367.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">manage_accounts</span>HEX removes middlemen
+					</span>
+					HEX is a finished, immutable, unstoppable smart contract with 3 independent <a href="howitworks/index.html#Audits" class="textLink">audits</a> from two of the top Blockchain contract auditors in the world. By design there is <a href="howitworks/index.html#Decentralization" class="textLink">no central entity</a> in HEX. No one owes anybody anything. As long as you have your private key, you truly own your HEX.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">insights</span>HEX’s share price up <span class="dataLbl-shareX">16,000x</span>
+					</span>
+					The price of 1 <a href="howitworks/index.html#T-Shares" class="textLink">T-Share</a> has risen steadily from $.56 to $<span class="dataLbl-sharePrice">9000</span> in just <span class="dataLbl-hexDay"></span> days which mirrors the ROI of Stakers. By <a href="howitworks/index.html#Staking" class="textLink">Staking</a> their HEX for fixed timeframes, they reduce the supply, which puts upwards pressure on HEX’s price. Stakers receive rewards for not being able to sell their HEX while it's Staked.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">verified_user</span>HEX’s inflation is capped at 3.69%
+					</span>
+					More than 300,000 BTC in over 30,000 addresses minted their own HEX for free using the HEX contract. HEX is the first cryptocurrency with a <a href="howitworks/index.html#Unique_tools" class="textLink">chart of its future locked supply</a>. You can see when big Stakes are set to expire and plan around them to receive your HEX at times of low supply.
+				</div>
+				<div>
+					<span class="hr">
+						<span class="mi">account_balance</span>HEX pays 38%<br>APY on average
+					</span>
+					Stakers get paid rewards daily. This multiplies their ROI when HEX’s price appreciates against USD. Active Stakes also receive <a href="howitworks/index.html#Rewarding_honesty" class="textLink">penalties</a> of other users who end Stakes earlier or later than they committed to. HEX rewards longer and larger Stakes as well, resulting in an average APY of around 40%.
+				</div>
+			</div>
+			<div class="hr" style="display: flex; justify-content: center; margin-top: 50px;">
+				<a class="btn" href="howitworks/index.html">
+					<span class="mi">import_contacts</span>Learn more
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="hr section" style="background: var(--bgGradient);">
+		<div class="hr pageOuter">
+			<h1 class="hr">HEX.COM ads spotted</h1>
+			<div class="hr imgGrid">
+				<div style="background-image: url(_assets/img/banners/1.jpg);" tt="HEX.COM ad in The Economist"></div>
+				<div style="background-image: url(_assets/img/banners/2.jpg); grid-area: 3/1/4/3;" tt="Colorful ads on multiple British taxis"></div>
+				<div style="background-image: url(_assets/img/banners/3.jpg); grid-area: 1/1/3/2;" tt="HEX.COM ad in a British airport"></div>
+				<div style="background-image: url(_assets/img/banners/4.jpg); grid-area: 2/3/4/4;" tt="HEX ad in the London Evening Standard newspaper"></div>
+				<div style="background-image: url(_assets/img/banners/5.jpg);" tt="HEX buses on the streets of Birmingham"></div>
+				<div style="background-image: url(_assets/img/banners/6.jpg);" tt="Another HEX.COM ad in The Economist"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="hr section" style="background-color: #111; background-image: url(_assets/img/bg/pattern.jpg);">
+		<div class="hr pageOuter">
+			<h1 class="hr">Awesome community made sites</h1>
+			<div class="hr imgGrid" id="awesomeSitesGrid">
+				<a target="_blank" rel="noopener" style="background-image: url(_assets/img/websites/hexvision.jpg);" href="https://hex.vision/"></a>
+				<a target="_blank" rel="noopener" style="background-image: url(_assets/img/websites/customhex.jpg);" href="http://customhex.com/"></a>
+				<a target="_blank" rel="noopener" style="background-image: url(_assets/img/websites/hexgraphs.jpg);" href="https://hexgraphs.com/"></a>
+				<a target="_blank" rel="noopener" style="background-image: url(_assets/img/websites/apphex.jpg);" href="https://apphex.win/charts"></a>
+				<a target="_blank" rel="noopener" style="background-image: url(_assets/img/websites/staker.jpg);" href="https://staker.app/"></a>
+				<a target="_blank" rel="noopener" style="background-image: url(_assets/img/websites/lookintohex.jpg);" href="https://lookintohex.com/"></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="hr section fixedBG" style="background-color: #0d0c14; --bgImage: url(_assets/img/bg/floor2.jpg);">
+		<div class="hr pageOuter">
+			<h1 class="hr" style="padding-bottom: 20px;">Coming soon from Muse Storytelling</h1>
+			<video class="video-js vjs-fluid" controls preload="metadata" poster="_assets/vids/HEX_the_highest_of_stakes_trailer.jpg" data-setup="{}">
+				<source src="_assets/vids/HEX_the_highest_of_stakes_trailer.mp4" type="video/mp4">
+			</video>
+			<a class="btn" target="_blank" rel="noopener" href="https://go.musestorytelling.com/thehighestofstakes" style="margin: 25px 30px 0 0;">
+				<span class="mi">school</span>Learn more
+			</a>
+			<a class="btn" target="_blank" rel="noopener" href="https://twitter.com/THoSdocumentary" style="margin-top: 25px;">
+				<span class="mi">launch</span>Twitter
+			</a>
+		</div>
+	</div>
+
+	<script>
+		particlesJS("particleDiv", {
+			interactivity: {events: {
+				onhover: {enable: false},
+				onclick: {enable: false}
+			}},
+			particles: {
+				number: {value: 10},
+				shape: {
+					type: 'image',
+					image: {src: '_assets/img/hexParticle.png', width: 10, height: 10}
+				},
+				size: {value: 50, random: true},
+				line_linked: {enable: false},
+				move: {enable: true, speed: 3, direction: 'top-right'}
+			}
+		})
+
+		function drawChart (prices) {
+			const data = [], labels = []
+
+			for (i=2;i<prices.length;i++) {
+				data.push(prices[i])
+				labels.push(i+1)
+			}
+
+			let chartMax = Math.max(...data)*2
+			if (chartMax < 2) chartMax = 2
+
+			new Chart($('#chartCanvas')[0].getContext('2d'), {
+				type: 'line',
+				data: {
+					labels: labels,
+					datasets: [{
+						data: data, backgroundColor: '#f0f2', borderColor: '#f0f', pointRadius: 0
+					}]
+				},
+				options: {
+					tooltips: {
+						mode: 'nearest', intersect: false,
+						yAlign: 'bottom', xAlign: 'center', titleAlign: 'center', bodyAlign: 'center',
+						displayColors: false, cornerRadius: 5,
+						backgroundColor: '#fff',
+						titleFontFamily: 'Poppins', titleFontStyle: '600', bodyFontSize: 15, bodyFontFamily: 'Jost', titleFontColor: '#555', bodyFontColor: '#000',
+						callbacks: {
+							title: i => 'HEX Day '+i[0].xLabel+'\n'+moment('12/2/19').add(parseInt(i[0].xLabel),'day').format('Do MMM YYYY'),
+							label: i => '$'+parseFloat(Number(i.yLabel).toPrecision(2))
+						}
+					},
+					responsive: true, maintainAspectRatio: false,
+					elements: {line: {borderJoinStyle: 'round', borderWidth: 3}},
+					legend: {display: false},
+					scales:{
+						yAxes: [{
+							type: 'logarithmic',
+							gridLines: {color: '#fff2', lineWidth: 2},
+							scaleLabel: {
+								display: true, fontFamily: 'Jost', fontSize: 16, fontColor: '#ccc', labelString: 'HEX price in USD'
+							},
+							ticks: {
+								min: 0, max: chartMax, autoSkip: false, fontFamily: 'Poppins', fontStyle: '600', fontSize: 12, fontColor: '#ccc',
+								callback: (value,i,v) => (Math.log10(value)%1 == 0) ? '$'+value : null
+							}
+						}],
+						xAxes: [{
+							gridLines: {color: '#fff2', lineWidth: 2},
+							scaleLabel: {
+								display: true, fontFamily: 'Jost', fontSize: 16, fontColor: '#ccc', labelString: 'Days since launch'
+							},
+							ticks: {
+								autoSkip: false, fontFamily: 'Poppins', fontStyle: '600', fontSize: 12, fontColor: '#ccc',
+								callback: (value,i,v) => {
+									if (value == 3) return 1
+
+									if (value % 100 == 0) return value
+								}
+							}
+						}]
+					}
+				}
+			})
+		}
+
+		async function getData () {
+			const hdsApi = await $.getJSON('https://hexdailystats.com/hexsite')
+
+			const priceX = Math.floor(hdsApi.priceATH / .000053879) // ATL from https://charts.cointrader.pro/charts.html?coin=HEX%3aUSD
+			$('.dataLbl-priceX').text(priceX+'x')
+			$('.dataLbl-millionaire').text('$'+Math.round(1_000_000/priceX))
+			const doublings = Math.floor(Math.log2(priceX))
+			$('.dataLbl-doublings').text(doublings)
+			const hexDay = Math.floor((new Date().getTime() - 1575244800000)/1000/3600/24)
+			$('.dataLbl-doubleTime').text(Math.round(hexDay / doublings) + ' days')
+			$('.dataLbl-hexDay').text(hexDay)
+			$('.dataLbl-hexSentence').html(`So far the price of HEX appreciated ${priceX}x (${Math.floor((priceX-1)*100).toLocaleString('en-US')}%) over ${hexDay} days.<br>It doubled ${doublings} times during that time, on average every ${Math.round(hexDay / doublings)} days.`)
+
+			$('.dataLbl-avgStakeLength').text(Math.round(hdsApi.averageStakeLength*10)/10 + ' years')
+			$('.dataLbl-holders').text(hdsApi.numberOfHolders.toLocaleString('en-US'))
+			$('.dataLbl-holdersChange').text(`+${hdsApi.numberOfHoldersChange} today`)
+			$('.dataLbl-stakers').text(hdsApi.currentStakerCount.toLocaleString('en-US'))
+			$('.dataLbl-stakersChange').text(`+${hdsApi.currentStakerCountChange} today`)
+			$('.dataLbl-tvl').text(`$${Math.round(hdsApi.totalValueLocked/1_000_000_000)}B`)
+			$('.dataLbl-stakedSupply').text(Math.round(hdsApi.stakedHEX/1_000_000_000)+'B HEX')
+			$('.dataLbl-supply').text(Math.round(hdsApi.circulatingHEX/1_000_000_000)+'B HEX')
+			$('.dataLbl-shareX').text(Math.floor(hdsApi.tshareRateUSD_Highest / .56).toLocaleString('en-US')+'x')
+			$('.dataLbl-sharePrice').text(Math.round(hdsApi.tshareRateUSD_Highest))
+
+			drawChart(hdsApi.priceUV2UV3_Array)
+
+			// Production key for hex.com domain: 2ae62545bbe20a35fc20f2a7cc5a95a9
+			const nApi = await $.getJSON('https://api.nomics.com/v1/currencies/ticker?key=2ae62545bbe20a35fc20f2a7cc5a95a9&amp;ids=HEX&amp;interval=1d&amp;per-page=100')
+
+			$('.dataLbl-price').text('$'+parseFloat(nApi[0].price).toFixed(2))
+			$('.dataLbl-mCap').text(`$${Math.round(hdsApi.circulatingHEX*parseFloat(nApi[0].price)/1_000_000_000)}B`)
+			$('.dataLbl-dominance').text(Math.round(parseFloat(nApi[0].market_cap_dominance)*1000)/10+'%')
+			$('.dataLbl-exchanges').text(nApi[0].num_exchanges)
+			$('.dataLbl-rank').text('#'+nApi[0].rank)
+		}
+		getData()
+	</script>
+
+	<style>
+		#socialsOuter > a > img {
+			height: 50px; position: absolute; transition: all .1s;
+			clip-path: polygon( /*this is only to make hover effect borders more smooth*/
+				25% 5%,
+				75% 5%,
+				102% 50%,
+				75% 95%,
+				25% 95%,
+				-2% 50%
+			);
+		}
+
+		@media not all and (pointer:coarse) {
+			#socialsOuter > a > img:hover {transform: scale(1.08);}
+		}
+
+		#footerOuter {padding-top: 145px !important; padding-bottom: 40px;}
+		@media (max-width: 1150px) {
+			#footerOuter {padding-top: 95px !important;}
+		}
+
+		#socialsOuter {position: absolute; top: 50%; left: 50%; width: 320px; height: 102px; transform: translate(-50%, -50%);}
+		@media (max-width: 820px) {
+			#footerOuter > .pageOuter {text-align: center;}
+			#socialsOuter {display: inline-block; position: relative; transform: none; left: auto; margin: 50px 0;}
+			#disclaimerOuter, #footerLinksOuter {width: 100%; text-align: center !important;}
+		}
+
+		@media (max-width: 360px) {
+			#socialsOuter {left: 50%; transform: translateX(-50%); margin: 30px 0;}
+		}
+	</style>
+
+	<div class="hr section" id="footerOuter" style="background-color: var(--bgColor);">
+		<span class="hr pageOuter">
+			<div class="fl" id="footerLinksOuter" style="float: right; text-align: right; line-height: 1.6em;">
+				<a href="downloads/index.html" class="textLink footerLink">Downloads</a><br>
+				<a href="trading/index.html" class="textLink footerLink">Trading</a><br>
+				<a href="dev/index.html" class="textLink footerLink">Developers</a>
+			</div>
+
+			<div id="socialsOuter">
+				<a target="_blank" rel="noopener" href="https://t.me/HEXcrypto">
+					<img src="_assets/img/socials/tg.png" style="left: 45px; bottom: 52px;" alt="Telegram social icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://t.me/HEXnews">
+					<img src="_assets/img/socials/tg2.png" style="left: 0; bottom: 26px;" alt="Telegram news social icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://t.me/HEXtrading">
+					<img src="_assets/img/socials/tg3.png" style="left: 90px; bottom: 26px;" alt="Telegram Trading icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://t.me/HEXmemes">
+					<img src="_assets/img/socials/tg4.png" style="left: 45px; bottom: 0px;" alt="Telegram Memes icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://twitter.com/HEXcrypto">
+					<img src="_assets/img/socials/tw.png" style="left: 225px; bottom: 52px;" alt="Twitter logo icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://youtube.com/HEXcrypto">
+					<img src="_assets/img/socials/yt.png" style="left: 135px; bottom: 52px;" alt="YouTube logo icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://reddit.com/r/HEXcrypto">
+					<img src="_assets/img/socials/rt.png" style="left: 180px; bottom: 26px;" alt="Reddit logo icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://discord.gg/JmKBUCZKB3">
+					<img src="_assets/img/socials/dc.png" style="left: 225px; bottom: 0px;" alt="Discord logo icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://facebook.com/HEXcrypto">
+					<img src="_assets/img/socials/fb.png" style="left: 270px; bottom: 26px;" alt="Facebook logo icon">
+				</a>
+				<a target="_blank" rel="noopener" href="https://instagram.com/HEXcrypto">
+					<img src="_assets/img/socials/ig.png" style="left: 135px; bottom: 0px;" alt="Instagram logo icon">
+				</a>
+			</div>
+
+			<div class="fl" id="disclaimerOuter">
+				<a href="mailto:contact@hex.com" target="_blank" rel="noopener" class="textLink" style="cursor: pointer;">contact@HEX.com</a>
+				<br><br>
+				<span style="font-size: 12px; color: #555;">
+					Copyright © 2022. All Rights Reserved.<br>
+					<a href="disclaimer.txt" target="_blank" rel="noopener" class="textLink" style="color: #555;">Disclaimer</a>
+				</span>
+			</div>
+		</span>
+	</div>
+
+	<script>
+		function scrollToElem (elemID) {
+			window.scrollTo(0, $('#'+elemID).offset().top - 160)
+		}
+
+
+		$('.infoBtn').each((index, elem)=>{
+			const btnText = $(elem).text()
+			$(elem).attr('href', `javascript:showInfoDiv("${btnText}")`)
+			// Add icon to button
+			$(elem).html(`<span class="mi">${content[btnText][1]}</span>${$(elem).html()}`)
+		})
+
+		function showInfoDiv (cID) {
+			$('#infoDivTitle').html(`
+				<span class="mi">${content[cID][1]}</span>
+				<span style="z-index: 2102; position: relative;">${content[cID][0]}</span>
+			`)
+			$('#infoDivText').html(content[cID][2].replace(/\r?\n/g, '<br>'))
+			$('.infoDiv, .blackBG').show()
+			window.location.hash = cID.replaceAll(' ', '_')
+		}
+
+		function close () {
+			history.replaceState(null, null, ' ')
+			$('.infoDiv, .blackBG').hide()
+		}
+
+
+		const flSiteIndex = ['downloads','trading','dev'].indexOf(window.location.pathname.replaceAll('index.html',''))
+		if (flSiteIndex > -1)
+			$(`.footerLink:eq(${flSiteIndex})`).css({
+				cursor: 'default',
+				'text-decoration': 'none',
+				'font-weight': '700'
+			}).attr('href','javascript:')
+
+		// Pause every other video when another one is played
+		const vids = Array.prototype.slice.apply($('video'))
+		vids.forEach(v => {
+			v.addEventListener('play', e => {
+				vids.forEach(v => {
+					if (e.target != v) v.pause()
+				})
+			})
+		})
+
+		// Hide clip-paths in videojs fullscreen to fix z-index bug in Safari on desktop
+		$(()=>{
+			for (i=0;i<vids.length;i++) {
+				videojs(vids[i]).on('fullscreenchange', ()=>{
+					$('.section').toggleClass('sectionCP')
+				})
+			}
+		})
+		// Scam warning & Job Listing
+		setTimeout(()=>{
+			console.log(
+				'%cSTOP!\n%cNEVER paste anything in here! YOU WILL GET SCAMMED!!!\n%cOnly type anything in here if you are VERY sure about what you are doing! Otherwise there is an extremely high chance that you WILL LOSE YOUR MONEY!',
+				'font-size: 50px; font-weight: 900; color: #f00;',
+				'font-size: 30px; font-weight: 900; color: #f00;',
+				'font-size: 15px; font-weight: 900; color: #f00;'
+			)
+
+		console.log(
+				'%cBut\n%cin case you actually know what you are doing visit hex.com/dev',
+				'font-size: 50px; font-weight: 900; color: #f0f;',
+				'font-size: 15px; font-weight: 900; color: #f0f;'
+			)
+		}, 1000)
+	</script>
+
+    
+
+</body>
+
+<!-- Mirrored from hex.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 21 May 2022 16:16:49 GMT -->
+</html>
